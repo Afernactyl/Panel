@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('./parts/header.ejs') %>
+  
+  <style>
+    .container {
+      align-items: center;
+      background-color: transparent;
+      display: flex;
+      flex-direction: column; /* Adjusted to stack forms on top of each other */
+      padding-top: 80px; /* Added space at the top of the container */
+    }
+
+    form {
+      max-width: 400px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 60px; /* Added margin between forms */
+    }
+
+    .pass {
+      font-weight: bold;
+      text-align: left;
+      width: 100%;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .big[type="submit"] {
+      background-color: #ff0000;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Media query for small screens */
+    @media (max-width: 600px) {
+      .container {
+        padding: 0 10px; /* Added padding for better mobile view */
+      }
+    }
+
+    /* Adjusted margin for the footer */
+    footer {
+      margin-top: 0px; /* You can adjust this value as needed */
+    }
+  </style>
+</head>
+
+<body>
+  <%- include('./parts/sidebar.ejs', { username: username }) %>
+  <div class="container">
+    <% if (typeof error !== 'undefined' && error) { %>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+    <% } %>
+    <form action="/cpass" method="post">
+      <h1 class="pass">Change Password</h1>
+      <p>Changes your login and pterodactyl password</p>
+      <p class="pass">Current Password</p>
+      <input type="password" name="currentPassword" required>
+      <p class="pass">New Password</p>
+      <input type="password" name="newPassword" required>
+      <p class="pass">Retype Password</p>
+      <input type="password" name="confirmPassword" required>
+      <input type="submit" value="Change Password">
+    </form>
+
+    <form action="/da" method="post">
+      <h1 class="pass">Delete Account</h1>
+      <p>Deletes your account from pterodactyl and dashboard</p>
+      <input type="password" name="password" placeholder="Enter your password" required>
+      <input type="submit" name="deleteAccount" class="big" value="Delete">
+    </form>
+  </div>
+  <footer><%- include('./parts/footer.ejs') %></footer>
+</body>
+
+</html>

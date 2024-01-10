@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('./parts/header.ejs') %>
+        <style>
+            /* Add custom styles for the boxes */
+            .dashboard-container {
+                display: flex;
+                justify-content: space-between;
+                padding: 20px;
+            }
+
+            .dashboard-box {
+                width: 23%; /* Adjust the width as needed */
+                padding: 20px;
+                border: 1px solid #ccc;
+                background-color: white;
+                border-radius: 8px;
+                box-sizing: border-box;
+                text-align: center;
+            }
+
+            .box-icon {
+                font-size: 36px;
+                margin-bottom: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <%- include('./parts/sidebar.ejs', { username: username }) %>
+        
+        <!-- Dashboard content -->
+        <div class="dashboard-container">
+            <!-- RAM Box -->
+            <div class="dashboard-box">
+                <i class="box-icon fas fa-memory"></i>
+                <h2>RAM</h2>
+                <!-- Add RAM content here -->
+            </div>
+
+            <!-- CPU Box -->
+            <div class="dashboard-box">
+                <i class="box-icon fas fa-microchip"></i>
+                <h2>CPU</h2>
+                <!-- Add CPU content here -->
+            </div>
+
+            <!-- Disk Box -->
+            <div class="dashboard-box">
+                <i class="box-icon fas fa-hdd"></i>
+                <h2>Disk</h2>
+                <!-- Add Disk content here -->
+            </div>
+
+            <!-- Servers Box -->
+            <div class="dashboard-box">
+                <i class="box-icon fas fa-server"></i>
+                <h2>Servers</h2>
+                <!-- Add Servers content here -->
+            </div>
+        </div>
+
+        <footer></footer>
+    </body>
+</html>

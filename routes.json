@@ -1,0 +1,64 @@
+{
+  "index": {
+    "url": "/",
+    "pageTitle": "Afernactyl - Login",
+    "requiredAuth": true,
+    "isAdmin": false,
+    "template": "index"
+  },
+  "404": {
+    "url": "/test",
+    "pageTitle": "Afernactyl - 404",
+    "requiredAuth": false,
+    "isAdmin": false,
+    "template": "404"
+  },
+  "login": {
+    "url": "/login",
+    "pageTitle": "Afernactyl - Login",
+    "requiredAuth": false,
+    "isAdmin": false,
+    "template": "login"
+  },
+  "register": {
+    "url": "/register",
+    "requiredAuth": false,
+    "isAdmin": false,
+    "template": "register"
+  },
+  "dashboard": {
+    "url": "/dashboard",
+    "pageTitle": "Afernactyl - Dashboard",
+    "requiredAuth": true,
+    "isAdmin": false,
+    "template": "dashboard"
+  },
+  "settings": {
+    "url": "/settings",
+    "pageTitle": "Afernactyl - Settings",
+    "requiredAuth": true,
+    "isAdmin": false,
+    "template": "settings"
+  },
+  "admin-home": {
+    "url": "/admin/home",
+    "pageTitle": "Afernactyl Admin - Home",
+    "requiredAuth": true,
+    "isAdmin": true,
+    "template": "admin-home"
+  },
+  "admin-plans": {
+    "url": "/admin/plans",
+    "pageTitle": "Afernactyl Admin - Plans",
+    "requiredAuth": true,
+    "isAdmin": true,
+    "template": "admin-plans"
+  },
+    "plans": {
+      "url": "/plans",
+      "pageTitle": "Afernactyl - Plans",
+      "requiredAuth": true,
+      "isAdmin": false,
+      "template": "plans"
+  }
+}

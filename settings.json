@@ -1,0 +1,21 @@
+{
+    "Theme": {
+        "Dashboard_Name": "Afernactyl",
+        "Dashboard_Theme": "default",
+        "Dashboard_Favicon": "./public/default/assets/img/logo.ico",
+        "port": "3000",
+        "debug": false,
+        "version": "1.0.1"
+    },
+    "api": {
+        "key": ""
+    },
+    "license": {
+        "key": "validLicense",
+        "domain": "under development version"
+    },
+    "pterodactyl": {
+        "key": "ptla_1dNuwAtzCAnNwxwJ0hXBMY435ZEMvi8dQvLDtVaQfx1",
+        "domain": "https://panel.srialawwarp.xyz/"
+    }
+}

@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('./parts/header.ejs') %>
+    </head>
+    <body>
+        <%- include('./parts/sidebar.ejs', { username: username }) %>
+        <footer><%- include('./parts/footer.ejs') %></footer>
+    </body>
+</html>

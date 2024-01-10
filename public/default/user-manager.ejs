@@ -1,0 +1,80 @@
+<!-- user-manager.ejs -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('./parts/header.ejs') %>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <%- include('./parts/sidebar.ejs', { username: username }) %>
+
+    <h1><%= pageTitle %></h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <!-- Add more columns as needed -->
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(user => { %>
+                <tr>
+                    <td><%= user.username %></td>
+                    <td><%= user.email %></td>
+                    <!-- Add more columns as needed -->
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <footer>
+        <%- include('./parts/footer.ejs') %>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('./parts/header.ejs') %>
+    <style>
+        /* Custom styles for the version box */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .version-box {
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px; /* Padding inside the box */
+            background-color: white; /* Box background color */
+            text-align: center; /* Center text */
+            max-width: 400px; /* Maximum width of the box */
+            margin-top: 20vh; /* Adjusted margin to the top */
+            margin-bottom: 0;
+        }
+
+        /* Add space for the outdated version */
+        .outdated-message {
+            margin-top: 10px;
+        }
+
+        /* Limit the width of text and button */
+        .version-box p,
+        .btn-primary {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        footer {
+            margin-top: 5vh; /* Adjusted margin to the top */
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('./parts/admin-sidebar.ejs', { username: username }) %>
+    <div class="container">
+        <div class="version-box">
+            <h1>Software Version</h1>
+            <p>Current version: <%= version.localVersion %></p>
+            <p class="<%= version.localVersion < version.apiVersion ? 'text-danger outdated-message' : '' %>">
+                Latest version: <%= version.apiVersion %>
+                <% if (version.localVersion < version.apiVersion) { %>
+                    - You are outdated!
+                <% } else if (version.localVersion > version.apiVersion) { %>
+                    - You are up to date on BETA version!
+                <% } else { %>
+                    - You are up to date!
+                <% } %>
+            </p>
+            <% if (version.localVersion < version.apiVersion) { %>
+                <a href="<%= downloadLink %>" class="btn btn-primary">Download Update</a>
+                <!-- Center the button within the box -->
+            <% } %>
+        </div>
+    </div>
+    <footer>
+        <%- include('./parts/footer.ejs') %>
+    </footer>
+</body>
+
+</html>

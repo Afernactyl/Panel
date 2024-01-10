@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('./parts/header.ejs') %>
+    <style>
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .box {
+            background-color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <%- include('./parts/sidebar.ejs', { username: username }) %>
+    
+    <div class="container">
+        <!-- Modify your plans.ejs to check if plans are enabled -->
+        <% if (isAdmin && plansEnabled) { %>
+            <!-- Display plans content here -->
+            <div class="box" id="plansBox">
+                <!-- Your existing plans content -->
+                <!-- ... -->
+            </div>
+        <% } else { %>
+            <!-- Plans are not enabled or user is not an admin -->
+            <div class="box">
+                <h3>Plans Feature is Disabled</h3>
+                <p>Contact an admin to enable plans.</p>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>

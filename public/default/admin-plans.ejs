@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include('./parts/header.ejs') %>
+  <style>
+    .container {
+      display: flex;
+      margin-top: 20px;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .box {
+      margin-top: 10vh;
+      background-color: #fff;
+      border-radius: 8px;
+      height: 10vh;
+      width: 100vh;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .box h3 {
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+
+    .switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .slider {
+      height: 20px;
+      width: 40px;
+      background-color: #ccc;
+      border-radius: 10px; /* Set to half of the height for a circle */
+      position: relative;
+      cursor: pointer;
+      transition: .4s;
+    }
+
+    .slider:before {
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 4px;
+      top: 2px;
+      background-color: white;
+      border-radius: 50%; /* Use border-radius to create a circle */
+      position: absolute;
+      transition: .4s;
+    }
+
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+
+    #plansBox {
+      display: none;
+      height: 5vh; /* Adjust the height as needed */
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+    }
+
+    #plansBox p {
+      margin-top: 10px;
+      color: #6c757d;
+    }
+
+    #plansBox button {
+      margin-top: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <%- include('./parts/admin-sidebar.ejs', { username: username }) %>
+
+  <div class="container">
+    <!-- Box 1: Toggle Switch for Enabling/Disabling Plans Feature -->
+    <div class="box">
+        <h3>Enable Plans Feature</h3>
+        <div class="switch">
+          <input type="checkbox" id="toggleCheckbox" onchange="togglePlans()">
+          <div class="slider"></div>
+        </div>
+      </div>
+  </div>
+
+  <footer>
+    <%- include('./parts/footer.ejs') %>
+  </footer>
+
+  <!-- JavaScript to toggle the visibility of the second box (plansBox) and manage plan creation -->
+  <script>
+    function togglePlans() {
+      var toggleCheckbox = document.getElementById('toggleCheckbox');
+      var plansStatus = toggleCheckbox.checked;
+  
+      // Save the plans status to the database
+      savePlansStatus(plansStatus);
+    }
+  
+    function savePlansStatus(plansStatus) {
+      fetch('/admin/saveAdminSettings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ plansEnabled: plansStatus }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Plans status saved:', data);
+        })
+        .catch(error => {
+          console.error('Error saving plans status:', error);
+        });
+    }
+  </script>
+</body>
+
+</html>
